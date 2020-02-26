@@ -1,37 +1,46 @@
-[![Build Status](https://travis-ci.org/dogecoin/libdohj.svg?branch=master)](https://travis-ci.org/dogecoin/libdohj)
+[![Apache-2](https://img.shields.io/badge/license-Apache-2.svg)](COPYING)
+[![](https://jitpack.io/v/jjos2372/altcoinj.svg)](https://jitpack.io/#jjos2372/altcoinj)
 
-### Welcome to libdohj
 
-The libdohj library is a lightweight wrapper library around the bitcoinj Java library,
-enabling support for Dogecoin (pull requests for support for other altcoins would
-be welcomed).
+### Welcome to altcoinj
+
+The altcoinj (forked from [libdohj](https://github.com/dogecoin/libdohj)) library is a lightweight
+Java library around the [bitcoinj](https://bitcoinj.github.io/),
+with updated support for Litecoin and Dogecoin.
+
+Pull requests for support for other altcoins would be welcomed.
 
 ### Getting started
 
-To get started, it is best to have the latest JDK and Maven installed. The HEAD of the `master` branch contains the latest development code.
-You should be familiar with bitcoinj first, as this library simply adds minor
-changes to extend bitcoinj. Generally using libdohj is equivalent to using
-bitcoinj, except with different network parameters (reflecting Dogecoin consensus
+You should be familiar with [bitcoinj](https://bitcoinj.github.io/) first, as this library simply adds minor
+changes to extend bitcoinj. Generally using altcoinj is equivalent to using
+bitcoinj, except with different network parameters (reflecting altcoin consensus
 in place of Bitcoin).
+
+Add the following to your gradle.build file:
+```
+repositories {
+	maven { url 'https://jitpack.io' }
+}
+dependencies {
+	compile 'com.github.jjos2372:altcoinj:f26e20bb13'
+	compile 'org.bitcoinj:bitcoinj-core:0.15.6'
+}
+```
 
 Be aware however that altcoin blocks have their own class, AltcoinBlock, which
 adds support for features such as AuxPoW.
 
 #### Building from the command line
 
-To perform a full build use
+Simply run on the command line
 ```
-mvn clean package
+./gradlew jar
 ```
-You can also run
-```
-mvn site:site
-```
-to generate a website with useful information like JavaDocs.
 
-The outputs are under the `target` directory.
+The outputs are under the `build` directory.
 
 #### Building from an IDE
 
-Alternatively, just import the project using your IDE. [IntelliJ](http://www.jetbrains.com/idea/download/) has Maven integration built-in and has a free Community Edition. Simply use `File | Import Project` and locate the `pom.xml` in the root of the cloned project source tree.
+Alternatively, just import the project on your preferred IDE as a *gradle* project.
 
