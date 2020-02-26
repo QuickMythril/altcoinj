@@ -17,7 +17,10 @@ changes to extend bitcoinj. Generally using altcoinj is equivalent to using
 bitcoinj, except with different network parameters (reflecting altcoin consensus
 in place of Bitcoin).
 
-Add the following to your gradle.build file:
+Be aware however that altcoin blocks have their own class, AltcoinBlock, which
+adds support for features such as AuxPoW.
+
+To use altcoinj in your own project, just add the following to your gradle.build file:
 ```
 repositories {
 	maven { url 'https://jitpack.io' }
@@ -28,8 +31,7 @@ dependencies {
 }
 ```
 
-Be aware however that altcoin blocks have their own class, AltcoinBlock, which
-adds support for features such as AuxPoW.
+For maven, sbt, and leiningen check [jitpack](https://jitpack.io/#jjos2372/altcoinj).
 
 #### Building from the command line
 
