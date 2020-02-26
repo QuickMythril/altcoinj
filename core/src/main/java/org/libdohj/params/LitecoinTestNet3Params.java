@@ -18,7 +18,6 @@
 package org.libdohj.params;
 
 import org.bitcoinj.core.Utils;
-import org.spongycastle.util.encoders.Hex;
 
 import static com.google.common.base.Preconditions.checkState;
 import java.io.ByteArrayOutputStream;
@@ -31,6 +30,7 @@ import org.bitcoinj.core.TransactionInput;
 import org.bitcoinj.core.TransactionOutput;
 import org.bitcoinj.script.Script;
 import org.bitcoinj.script.ScriptOpCodes;
+import org.bouncycastle.util.encoders.Hex;
 
 /**
  * Parameters for the testnet, a separate public instance of Litecoin that has
@@ -52,7 +52,7 @@ public class LitecoinTestNet3Params extends AbstractLitecoinParams {
         port = 19333;
         addressHeader = 111;
         p2shHeader = 196;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
+        // acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         dumpedPrivateKeyHeader = 239;
 
         this.genesisBlock = createGenesis(this);
@@ -73,8 +73,8 @@ public class LitecoinTestNet3Params extends AbstractLitecoinParams {
             "dnsseed.wemine-testnet.com"
         };
 
-        bip32HeaderPub = 0x043587CF;
-        bip32HeaderPriv = 0x04358394;
+        bip32HeaderP2PKHpub = 0x043587CF;
+        bip32HeaderP2PKHpriv = 0x04358394;
     }
 
     private static AltcoinBlock createGenesis(NetworkParameters params) {

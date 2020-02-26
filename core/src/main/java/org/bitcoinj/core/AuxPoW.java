@@ -122,7 +122,7 @@ public class AuxPoW extends ChildMessage {
     @Override
     protected void parse() throws ProtocolException {
         cursor = offset;
-        transaction = new Transaction(params, payload, cursor, this, serializer, Message.UNKNOWN_LENGTH);
+        transaction = new Transaction(params, payload, cursor, this, serializer, Message.UNKNOWN_LENGTH, null);
         cursor += transaction.getOptimalEncodingMessageSize();
         optimalEncodingMessageSize = transaction.getOptimalEncodingMessageSize();        
 
@@ -163,7 +163,7 @@ public class AuxPoW extends ChildMessage {
      * @param chain If provided, will be used to estimate lock times (if set). Can be null.
      */
     public String toString(@Nullable AbstractBlockChain chain) {
-		return transaction.toString(chain);
+		return transaction.toString(chain, null);
     }
 
     @Override

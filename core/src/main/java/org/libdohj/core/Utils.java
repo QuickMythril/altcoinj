@@ -16,8 +16,9 @@
  */
 package org.libdohj.core;
 
-import com.lambdaworks.crypto.SCrypt;
 import java.security.GeneralSecurityException;
+
+import org.bouncycastle.crypto.generators.SCrypt;
 
 /**
  *
@@ -28,6 +29,6 @@ public class Utils {
      * The resulting hash is in small endian form.
      */
     public static byte[] scryptDigest(byte[] input) throws GeneralSecurityException {
-        return SCrypt.scrypt(input, input, 1024, 1, 1, 32);
+        return SCrypt.generate(input, input, 1024, 1, 1, 32);
     }
 }

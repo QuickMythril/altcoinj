@@ -17,10 +17,9 @@
 
 package org.bitcoinj.core;
 
-import org.libdohj.core.AltcoinNetworkParameters;
-import com.google.common.base.Preconditions;
+import static org.bitcoinj.core.Utils.reverseBytes;
+import static org.libdohj.core.Utils.scryptDigest;
 
-import javax.annotation.Nullable;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -28,13 +27,12 @@ import java.math.BigInteger;
 import java.security.GeneralSecurityException;
 import java.util.BitSet;
 import java.util.List;
-import static org.bitcoinj.core.Coin.FIFTY_COINS;
 
-import org.libdohj.core.ScryptHash;
-import static org.libdohj.core.Utils.scryptDigest;
+import javax.annotation.Nullable;
 
-import static org.bitcoinj.core.Utils.reverseBytes;
+import org.libdohj.core.AltcoinNetworkParameters;
 import org.libdohj.core.AuxPoWNetworkParameters;
+import org.libdohj.params.AbstractLitecoinParams;
 
 /**
  * <p>A block is a group of transactions, and is one of the fundamental data structures of the Bitcoin system.
@@ -61,7 +59,7 @@ public class AltcoinBlock extends org.bitcoinj.core.Block {
      */
     private boolean auxpowChain = false;
 
-    private ScryptHash scryptHash;
+    private Sha256Hash scryptHash;
 
     /** Special case constructor, used for the genesis node, cloneAsHeader and unit tests.
      * @param params NetworkParameters object.
@@ -113,11 +111,11 @@ public class AltcoinBlock extends org.bitcoinj.core.Block {
         super(params, version, prevBlockHash, merkleRoot, time, difficultyTarget, nonce, transactions);
     }
 
-    private ScryptHash calculateScryptHash() {
+    private Sha256Hash calculateScryptHash() {
         try {
             ByteArrayOutputStream bos = new UnsafeByteArrayOutputStream(HEADER_SIZE);
             writeHeader(bos);
-            return new ScryptHash(reverseBytes(scryptDigest(bos.toByteArray())));
+            return Sha256Hash.wrap(reverseBytes(scryptDigest(bos.toByteArray())));
         } catch (IOException e) {
             throw new RuntimeException(e); // Cannot happen.
         } catch (GeneralSecurityException e) {
@@ -137,7 +135,7 @@ public class AltcoinBlock extends org.bitcoinj.core.Block {
      * Returns the Scrypt hash of the block (which for a valid, solved block should be
      * below the target). Big endian.
      */
-    public ScryptHash getScryptHash() {
+    public Sha256Hash getScryptHash() {
         if (scryptHash == null)
             scryptHash = calculateScryptHash();
         return scryptHash;
@@ -207,7 +205,9 @@ public class AltcoinBlock extends org.bitcoinj.core.Block {
     @Override
     public long getVersion() {
         // TODO: Can we cache the individual parts on parse?
-        if (this.params instanceof AltcoinNetworkParameters) {
+    	if(this.params instanceof AbstractLitecoinParams) {
+            return super.getVersion();
+        } else if (this.params instanceof AltcoinNetworkParameters) {
             // AuxPoW networks use the higher block version bits for flags and
             // chain ID.
             return getBaseVersion(super.getVersion());

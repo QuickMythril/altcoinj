@@ -89,8 +89,8 @@ public abstract class AbstractLitecoinParams extends NetworkParameters implement
         maxTarget = Utils.decodeCompactBits(0x1e0fffffL);
 
         packetMagic = 0xfbc0b6db;
-        bip32HeaderPub = 0x0488C42E; //The 4 byte header that serializes in base58 to "xpub". (?)
-        bip32HeaderPriv = 0x0488E1F4; //The 4 byte header that serializes in base58 to "xprv" (?)
+        bip32HeaderP2PKHpub = 0x0488C42E; //The 4 byte header that serializes in base58 to "xpub". (?)
+        bip32HeaderP2PKHpriv = 0x0488E1F4; //The 4 byte header that serializes in base58 to "xprv" (?)
     }
 
     @Override
@@ -117,7 +117,7 @@ public abstract class AbstractLitecoinParams extends NetworkParameters implement
 
     @Override
     public Coin getMinNonDustOutput() {
-        return Coin.COIN;
+        return Coin.valueOf(100000);
     }
 
     @Override

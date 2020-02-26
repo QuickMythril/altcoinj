@@ -23,8 +23,9 @@ import org.bitcoinj.core.Sha256Hash;
  * but in time the two classes should have a common superclass rather than one
  * extending the other directly.
  */
-public class ScryptHash extends Sha256Hash {
+public class ScryptHash { // extends Sha256Hash {
 
+	/*
     public ScryptHash(byte[] rawHashBytes) {
         super(rawHashBytes);
     }
@@ -32,4 +33,5 @@ public class ScryptHash extends Sha256Hash {
     public ScryptHash(String hexString) {
         super(hexString);
     }
+    */
 }
