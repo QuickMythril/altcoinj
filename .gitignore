@@ -11,3 +11,4 @@ namecoin/target
 /nbproject/private/
 /build/
 /.gradle/
+/bin/
