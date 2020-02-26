@@ -4,8 +4,8 @@
 
 ### Welcome to altcoinj
 
-The altcoinj (forked from [libdohj](https://github.com/dogecoin/libdohj)) library is a lightweight
-Java library around the [bitcoinj](https://bitcoinj.github.io/),
+The altcoinj library (forked from [libdohj](https://github.com/dogecoin/libdohj)) is a lightweight
+Java library around [bitcoinj](https://bitcoinj.github.io/),
 with updated support for Litecoin and Dogecoin.
 
 Pull requests for support for other altcoins would be welcomed.
