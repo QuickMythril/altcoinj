@@ -10,3 +10,4 @@ namecoin/target
 *.wallet
 /nbproject/private/
 /build/
+/.gradle/
