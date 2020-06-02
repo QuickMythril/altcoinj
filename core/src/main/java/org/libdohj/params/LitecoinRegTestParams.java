@@ -42,6 +42,8 @@ public class LitecoinRegTestParams extends LitecoinTestNet3Params {
         port = 19444;
         id = ID_LITE_REGTEST;
         packetMagic = 0xfabfb5da;
+
+        segwitAddressHrp = "rltc";
     }
 
     @Override

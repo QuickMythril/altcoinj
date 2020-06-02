@@ -52,6 +52,7 @@ public class LitecoinTestNet3Params extends AbstractLitecoinParams {
         port = 19333;
         addressHeader = 111;
         p2shHeader = 196;
+        segwitAddressHrp = "tltc";
         // acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         dumpedPrivateKeyHeader = 239;
 

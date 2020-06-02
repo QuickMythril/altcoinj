@@ -51,6 +51,7 @@ public class LitecoinMainNetParams extends AbstractLitecoinParams {
         port = 9333;
         addressHeader = 48;
         p2shHeader = 5;
+        segwitAddressHrp = "ltc";
         // acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         dumpedPrivateKeyHeader = 176;
 
