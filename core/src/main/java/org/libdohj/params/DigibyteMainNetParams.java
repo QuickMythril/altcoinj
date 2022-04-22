@@ -29,6 +29,7 @@ import org.bitcoinj.script.ScriptOpCodes;
 import org.bouncycastle.util.encoders.Hex;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 import static com.google.common.base.Preconditions.checkState;
 
@@ -83,7 +84,6 @@ public class DigibyteMainNetParams extends AbstractDigibyteParams {
     }
 
     private static AltcoinBlock createGenesis(NetworkParameters params) {
-        AltcoinBlock genesisBlock = new AltcoinBlock(params, Block.BLOCK_VERSION_GENESIS);
         Transaction t = new Transaction(params);
         try {
             // A script containing the difficulty bits and the following message:
@@ -101,10 +101,11 @@ public class DigibyteMainNetParams extends AbstractDigibyteParams {
             // Cannot happen.
             throw new RuntimeException(e);
         }
-        genesisBlock.addTransaction(t);
-        genesisBlock.setTime(1389388394L);
-        genesisBlock.setDifficultyTarget(0x1e0ffff0L);
-        genesisBlock.setNonce(2447652);
+
+        Sha256Hash merkleRoot = Sha256Hash.wrap("72ddd9496b004221ed0557358846d9248ecd4c440ebd28ed901efc18757d0fad");
+        AltcoinBlock genesisBlock = new AltcoinBlock(params, Block.BLOCK_VERSION_GENESIS, Sha256Hash.ZERO_HASH,
+                merkleRoot, 1389388394L, 0x1e0ffff0L, 2447652, Arrays.asList(t));
+
         return genesisBlock;
     }
 
