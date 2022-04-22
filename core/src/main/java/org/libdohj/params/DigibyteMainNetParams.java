@@ -31,7 +31,6 @@ import org.bouncycastle.util.encoders.Hex;
 import java.io.ByteArrayOutputStream;
 
 import static com.google.common.base.Preconditions.checkState;
-import static org.bitcoinj.core.Coin.COIN;
 
 /**
  * Parameters for the Digibyte main production network on which people trade
@@ -87,22 +86,25 @@ public class DigibyteMainNetParams extends AbstractDigibyteParams {
         AltcoinBlock genesisBlock = new AltcoinBlock(params, Block.BLOCK_VERSION_GENESIS);
         Transaction t = new Transaction(params);
         try {
-            byte[] bytes = Hex.decode
-                    ("04ffff001d0104404e592054696d65732030352f4f63742f32303131205374657665204a6f62732c204170706c65e280997320566973696f6e6172792c2044696573206174203536");
+            // A script containing the difficulty bits and the following message:
+            //
+            //   "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
+            byte[] bytes = Utils.HEX.decode("04ffff001d01044555534120546f6461793a2031302f4a616e2f323031342c205461726765743a20446174612073746f6c656e2066726f6d20757020746f203131304d20637573746f6d657273");
+            //byte[] bytes = Hex.decode("04ffff001d0104294469676974616c636f696e2c20412043757272656e637920666f722061204469676974616c20416765");
             t.addInput(new TransactionInput(params, t, bytes));
             ByteArrayOutputStream scriptPubKeyBytes = new ByteArrayOutputStream();
-            Script.writeBytes(scriptPubKeyBytes, Hex.decode
-                    ("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"));
+            Script.writeBytes(scriptPubKeyBytes, Utils.HEX.decode("00"));
+            //("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f"));
             scriptPubKeyBytes.write(ScriptOpCodes.OP_CHECKSIG);
-            t.addOutput(new TransactionOutput(params, t, COIN.multiply(50), scriptPubKeyBytes.toByteArray()));
+            t.addOutput(new TransactionOutput(params, t, Coin.valueOf(8000, 0), scriptPubKeyBytes.toByteArray()));
         } catch (Exception e) {
             // Cannot happen.
             throw new RuntimeException(e);
         }
         genesisBlock.addTransaction(t);
-        genesisBlock.setTime(1317972665L);
+        genesisBlock.setTime(1389388394L);
         genesisBlock.setDifficultyTarget(0x1e0ffff0L);
-        genesisBlock.setNonce(2084524493);
+        genesisBlock.setNonce(2447652);
         return genesisBlock;
     }
 
