@@ -88,8 +88,8 @@ public class DigibyteMainNetParams extends AbstractDigibyteParams {
         try {
             // A script containing the difficulty bits and the following message:
             //
-            //   "USA Today: 10/Jan/2014, Target: Data stolen from up to 110M customers"
-            byte[] bytes = Utils.HEX.decode("04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73");
+            //   "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
+            byte[] bytes = Utils.HEX.decode("04ffff001d01044555534120546f6461793a2031302f4a616e2f323031342c205461726765743a20446174612073746f6c656e2066726f6d20757020746f203131304d20637573746f6d657273");
             //byte[] bytes = Hex.decode("04ffff001d0104294469676974616c636f696e2c20412043757272656e637920666f722061204469676974616c20416765");
             t.addInput(new TransactionInput(params, t, bytes));
             ByteArrayOutputStream scriptPubKeyBytes = new ByteArrayOutputStream();
