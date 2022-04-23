@@ -108,7 +108,7 @@ public class RavencoinMainNetParams extends AbstractRavencoinParams {
 
         Sha256Hash merkleRoot = Sha256Hash.wrap("28ff00a867739a352523808d301f504bc4547699398d70faf2266a8bae5f3516");
         AltcoinBlock genesisBlock = new AltcoinBlock(params, 4, Sha256Hash.ZERO_HASH,
-                merkleRoot, 1537466400L, 0x1e00ffffL, 25023712, Arrays.asList(t));
+                merkleRoot, 1514999494L, 0x1e00ffffL, 25023712, Arrays.asList(t));
                 // from https://github.com/RavenProject/Ravencoin/blob/master/src/chainparams.cpp
 
                 // merkleRoot, 1231006505L, 0x1d00ffffL, 2083236893, Arrays.asList(t));
