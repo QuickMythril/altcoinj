@@ -17,7 +17,6 @@
 
 /*
  * Adapted for Ravencoin in April 2022 by Qortal dev team
- * Thanks to https://github.com/coinext/ravencoinj for the references
  */
 
 package org.libdohj.params;
@@ -54,13 +53,6 @@ public class RavencoinMainNetParams extends AbstractRavencoinParams {
         p2shHeader = 122;
         // from https://github.com/RavenProject/Ravencoin/blob/master/src/chainparams.cpp
 
-        /* packetMagic = 0xf9beb4d9;
-        maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
-        port = 8333;
-        addressHeader = 0;
-        p2shHeader = 5; */
-        // from https://github.com/coinext/ravencoinj/blob/master/core/src/main/java/org/bitcoinj/params/MainNetParams.java
-
         // acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         dumpedPrivateKeyHeader = 128;
 
@@ -72,8 +64,6 @@ public class RavencoinMainNetParams extends AbstractRavencoinParams {
         checkState(genesisHash.equals("0000006b444bc2f2ffe627be9d9e7e7a0730000870ef6eb6da46c8eae389df90"));
         // from https://github.com/RavenProject/Ravencoin/blob/master/src/chainparams.cpp
 
-        // checkState(genesisHash.equals("000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"));
-        // from https://github.com/coinext/ravencoinj/blob/master/core/src/main/java/org/bitcoinj/params/MainNetParams.java
         alertSigningKey = Hex.decode("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
 
         majorityEnforceBlockUpgrade = MAINNET_MAJORITY_ENFORCE_BLOCK_UPGRADE;
@@ -110,9 +100,6 @@ public class RavencoinMainNetParams extends AbstractRavencoinParams {
         AltcoinBlock genesisBlock = new AltcoinBlock(params, 4, Sha256Hash.ZERO_HASH,
                 merkleRoot, 1514999494L, 0x1e00ffffL, 25023712, Arrays.asList(t));
                 // from https://github.com/RavenProject/Ravencoin/blob/master/src/chainparams.cpp
-
-                // merkleRoot, 1231006505L, 0x1d00ffffL, 2083236893, Arrays.asList(t));
-                // from https://github.com/coinext/ravencoinj/blob/master/core/src/main/java/org/bitcoinj/params/MainNetParams.java
 
         return genesisBlock;
     }
