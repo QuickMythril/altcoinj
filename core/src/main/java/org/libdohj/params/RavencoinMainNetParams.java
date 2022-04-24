@@ -61,7 +61,7 @@ public class RavencoinMainNetParams extends AbstractRavencoinParams {
         subsidyDecreaseBlockCount = 2100000;
 
         String genesisHash = genesisBlock.getHashAsString();
-        checkState(genesisHash.equals("0000006b444bc2f2ffe627be9d9e7e7a0730000870ef6eb6da46c8eae389df90"));
+        //checkState(genesisHash.equals("0000006b444bc2f2ffe627be9d9e7e7a0730000870ef6eb6da46c8eae389df90"));
         // from https://github.com/RavenProject/Ravencoin/blob/master/src/chainparams.cpp
 
         alertSigningKey = Hex.decode("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
