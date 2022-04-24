@@ -61,6 +61,7 @@ public class RavencoinMainNetParams extends AbstractRavencoinParams {
         subsidyDecreaseBlockCount = 2100000;
 
         String genesisHash = genesisBlock.getHashAsString();
+        // TODO: The genesis hash currently does not match, so checking has temporarily been disabled. This will need fixing before it the complete implementation can be used.
         //checkState(genesisHash.equals("0000006b444bc2f2ffe627be9d9e7e7a0730000870ef6eb6da46c8eae389df90"));
         // from https://github.com/RavenProject/Ravencoin/blob/master/src/chainparams.cpp
 
