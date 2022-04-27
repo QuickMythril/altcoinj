@@ -44,7 +44,7 @@ public abstract class AbstractVergeParams extends NetworkParameters implements A
     /** Standard format for the "Satoshi" denomination. */
     public static final MonetaryFormat SATOSHI;
 
-    public static final int XVG_TARGET_TIMESPAN = (int)(30);  // 30 seconds
+    public static final int VERGE_TARGET_TIMESPAN = (int)(30);  // 30 seconds
     public static final int VERGE_TARGET_SPACING = (int)(30);  // 30 seconds
     public static final int VERGE_INTERVAL = TARGET_TIMESPAN / TARGET_SPACING;
 
