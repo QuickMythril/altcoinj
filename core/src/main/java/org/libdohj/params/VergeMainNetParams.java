@@ -65,7 +65,7 @@ public class VergeMainNetParams extends AbstractVergeParams {
         //checkState(genesisHash.equals("00000fc63692467faeb20cdb3b53200dc601d75bdfa1001463304cc790d77278"));
         // from https://github.com/vergecurrency/verge/blob/master/src/chainparams.cpp
 
-        //alertSigningKey = Hex.decode("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
+        alertSigningKey = Hex.decode("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
 
         majorityEnforceBlockUpgrade = MAINNET_MAJORITY_ENFORCE_BLOCK_UPGRADE;
         majorityRejectBlockOutdated = MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED;
