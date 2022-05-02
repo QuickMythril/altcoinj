@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/*
+ * Adapted for Namecoin in May 2022 by Qortal dev team
+ * Thanks to https://github.com/dogecoin/libdohj & https://github.com/jjos2372/altcoinj for the references
+ */
+
 package org.libdohj.params;
 
 import java.io.ByteArrayOutputStream;
@@ -68,6 +73,8 @@ public abstract class AbstractNamecoinParams extends NetworkParameters implement
     /** Currency code for base 1/1,000,000 Namecoin. */
     public static final String CODE_UNMC = "µNMC";
 
+    // protected final AltcoinBlock genesisBlock;
+
     protected int auxpowStartHeight;
     
     private static final int BLOCK_VERSION_FLAG_AUXPOW = 0x00000100;
@@ -95,7 +102,7 @@ public abstract class AbstractNamecoinParams extends NetworkParameters implement
         genesisBlock = createGenesis(this);
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
-        maxTarget = Utils.decodeCompactBits(0x1e0fffffL); // TODO: figure out the Namecoin value of this
+        maxTarget = Utils.decodeCompactBits(0x1c007fffL);
         
         // BIP 43 recommends using these values regardless of which blockchain is in use.
         bip32HeaderP2PKHpub = 0x0488B21E; //The 4 byte header that serializes in base58 to "xpub".
